@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guessing Game</title>
+    <title id = "title">AP Lang Character guesser</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="game-container">
-        <h2>Enter Your Guess Here!</h2>
-        <p>Enter:</p>
-        <input type="number" id="guess" min="1" max="100">
-        <button id="submitGuess">Submit Guess</button>
-        <p id="feedback"></p>
+        <h2>Think of a Character from The Crucible or The Great Gatsby!</h2>
+        <p id="question">Ready? Click Start to begin!</p>
+        <button id="yes-btn" style="display: none;">Yes</button>
+        <button id="start-btn">Start Game</button>
+        <button id="no-btn" style="display : none;">No</button>
+        <p id="result"></p>
     </div>
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+
     
     <script src="script.js"></script>
 </body>
