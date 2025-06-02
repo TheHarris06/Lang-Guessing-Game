@@ -42,24 +42,28 @@ document.addEventListener("DOMContentLoaded", function () {
             questions = [
                 { text: "Is the character wealthy?", yes: ["Jay Gatsby", "Jordan Baker", "Tom Buchanan", "Meyer Wolfsheim", "Dan Cody"] },
                 { text: "Is the character a narrator?", yes: ["Nick Carraway", "Nick Carraway", "Nick Carraway"] },
-                { text: "Is the character old money?", yes: ["Tom Buchanan", "Daisy Buchanan"] },
+                { text: "Is the character live in East Egg?", yes: ["Tom Buchanan", "Daisy Buchanan"] },
                 { text: "Is the character a man?", yes: ["Jay Gatsby", "Owl Eyes", "Tom Buchanan", "Henry Gatz", "Nick Carraway", "George Wilson", "Dan Cody", 
                     "Jay Gatsby", "Owl Eyes", "Tom Buchanan", "Henry Gatz", "Nick Carraway", "George Wilson", "Dan Cody"
                 ] },
                 { text: "Is the character a mother?", yes: ["Daisy Buchanan"] },
-                { text: "Is the character working class?", yes: ["Myrtle Wilson", "George Wilson"] },
+                { text: "Is the character living in the Valley of Ashes", yes: ["Myrtle Wilson", "George Wilson"] },
                 { text: "Is the character involved in an affair?", yes: ["Tom Buchanan", "Daisy Buchanan", "Jay Gatsby", "Myrtle Wilson"] },
-                { text: "Is the character dead?", yes: ["Jay Gatsby", "Myrtle Wilson", "George Wilson", "Dan Cody"] },
+                { text: "Does the character die?", yes: ["Jay Gatsby", "Myrtle Wilson", "George Wilson", "Dan Cody"] },
                 { text: "Is the character an athlete?", yes: ["Jordan Baker", "Tom Buchanan"] },
-                { text: "Is the character an outsider within the Eggs?", yes: ["Jay Gatsby", "Nick Carraway"] },
+                { text: "Is the character new money (west egg)", yes: ["Jay Gatsby", "Nick Carraway"] },
                 { text: "Is the character a criminal?", yes: ["Tom Buchanan", "Meyer Wolfsheim", "Jay Gatsby", "Daisy Buchanan", "George Wilson"] },
-                { text: "Is the character a love interest?", yes: ["Daisy Buchanan", "Jordan Baker", "Myrtle Wilson"] },
-                { text: "Is the character a friend of Gatsby?", yes: ["Nick Carraway", "Jordan Baker", "Meyer Wolfsheim"] },
-                { text: "Is the character a socialite?", yes: ["Daisy Buchanan", "Jordan Baker"] },
+                { text: "Is the character a love interest to a man?", yes: ["Daisy Buchanan", "Jordan Baker", "Myrtle Wilson"] },
+                { text: "Is the character a known best as friend of Gatsby?", yes: ["Nick Carraway", "Jordan Baker", "Meyer Wolfsheim"] },
+                { text: "Is the character a flapper?", yes: ["Daisy Buchanan", "Jordan Baker"] },
                 { text: "Does the character have a mysterious past?", yes: ["Jay Gatsby", "Meyer Wolfsheim"] },
                 { text: "Is the character a bootlegger?", yes: ["Meyer Wolfsheim", "Jay Gatsby"] },
                 { text: "Is the character a gambler?", yes: ["Meyer Wolfsheim"] },
-                { text: "Is the character a party-goer?", yes: ["Jay Gatsby", "Jordan Baker"] }
+                { text: "Can the character be seen at the parties?", yes: ["Jay Gatsby", "Jordan Baker", "Daisy Buchanan", "Tom Buchanan", "Owl Eyes"]},
+                { text: "Is the character a mentor to Gatz?", yes: ["Dan Cody"] },
+                { text: "Is the character a car owner during the trip to town?", yes: ["Tom Buchanan", "Jay Gatsby",] },
+                { text: "Is the character present at Gatsby's funeral", yes: ["Nick Carraway", "Owl Eyes"] }
+                
             ];
         } else if (gatz === 2) {
             characters = [
@@ -78,25 +82,31 @@ document.addEventListener("DOMContentLoaded", function () {
             ];
             // try to think of like 25 questions pls, can be some repeats from gastby
             questions = [
-                { text: "Is the character a farmer?", yes: ["John Proctor", "Giles Corey"] },
+                { text: "Is the character a farmer?", yes: ["John Proctor", "Giles Corey", "Thomas Putnam"] },
                 { text: "Is the character in a dispute?", yes: ["John Proctor", "Thomas Putnam", "Reverend Parris"] },
                 { text: "Is the character a judge?", yes: ["Judge Danforth", "Judge Danforth", "Judge Danforth"] },
-                { text: "Is the character married?", yes: ["John Proctor", "Elizabeth Proctor", "Mary Warren", "Rebecca Nurse", "Giles Corey", "Ann Putnam",
+                { text: "Is the character married?", yes: ["John Proctor", "Elizabeth Proctor", "Rebecca Nurse", "Giles Corey", "Ann Putnam",
                     "John Proctor", "Elizabeth Proctor", "Mary Warren", "Rebecca Nurse", "Giles Corey", "Ann Putnam"
                 ] },
                 { text: "Is the character a woman ?", yes: ["Elizabeth Proctor", "Abigail Williams", "Mary Warren", "Tituba", "Rebecca Nurse", "Ann Putnam",
                     "Elizabeth Proctor", "Abigail Williams", "Mary Warren", "Tituba", "Rebecca Nurse", "Ann Putnam"
                 ] },
-                { text: "Is the character a religious figure?", yes: ["Reverend Parris", "Reverend Hale"] },
+                { text: "Is the character a Church leader", yes: ["Reverend Parris", "Reverend Hale"] },
                 { text: "Is the character a main antagonist?", yes: ["Abigail Williams", "Thomas Putnam"] },
-                { text: "Is the character a victim of the witch trials?", yes: ["John Proctor", "Giles Corey", "Rebecca Nurse"] },
+                { text: "Is the character a victim of the witch trials?", yes: ["John Proctor", "Giles Corey", "Rebecca Nurse", "Elizabeth Putnum",] },
                 { text: "Is the character a servant?", yes: ["Mary Warren", "Tituba"] },
                 { text: "Is the character a member of the court?", yes: ["Judge Danforth", "Reverend Hale"] },
                 { text: "Is the character a main character?", yes: ["John Proctor", "Elizabeth Proctor", "Abigail Williams", "Reverend Parris", "Reverend Hale", "Judge Danforth"] },
                 { text: "Is the character a member of the Putnam family?", yes: ["Thomas Putnam", "Ann Putnam"] },
-                { text: "Is the character a main accuser in the trials?", yes: ["Abigail Williams", "Mary Warren"] },
+                { text: "Is the character a main accuser of witchcraft?", yes: ["Abigail Williams", "Mary Warren"] },
                 { text: "Is the character a supporter of the trials?", yes: ["Judge Danforth", "Abigail Williams", "Thomas Putnam"] },
-                { text: "Is the character a mother?", yes: ["Rebecca Nurse", "Elizabeth Proctor", "Ann Putnam"] }
+                { text: "Is the character a mother?", yes: ["Rebecca Nurse", "Elizabeth Proctor", "Ann Putnam"] },
+                { text: "Does the character present evidence to help their wife?", yes: ["Giles Corey", "John Proctor"] },
+                { text: "Is the character executed?", yes: ["John Proctor", "Giles Corey", "Rebecca Nurse"] },
+                {text: "Does the character pretend to see a bird?", yes: ["Mary Warren", "Abigail WIlliams"] }
+               
+
+
             ];
         }
     }
@@ -164,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 firstQuestionAsked = true;
                 askNextQuestion();
             };
-        } else if (questionIndex < 10) { // this is what you need to change to add more questions, just change the number 2 to however many questions you want id reccommend 15-20
+        } else if (questionIndex < 13) { // this is what you need to change to add more questions, just change the number 2 to however many questions you want id reccommend 15-20
             let currentQuestion = getRandomQuestion(); // current question is what will be displayed
             questionText.textContent = currentQuestion.text;
 
