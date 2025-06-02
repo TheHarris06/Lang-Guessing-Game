@@ -35,12 +35,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 { name: "George Wilson", points: 0 },
                 { name: "Meyer Wolfsheim", points: 0 },
                 { name: "Owl Eyes", points: 0 },
-                { name: "Henry Gatz", points: 0 }
+                { name: "Henry Gatz", points: 0 },
+                { name: "Dan Cody", points: 0 }
             ];
             // try to think of like 25 questions pls
             questions = [
-                { text: "Is the character wealthy?", yes: ["Jay Gatsby"] },
-                { text: "Is the character a narrator?", yes: ["Nick Carraway"] }
+                { text: "Is the character wealthy?", yes: ["Jay Gatsby", "Jordan Baker", "Tom Buchanan", "Meyer Wolfsheim", "Dan Cody"] },
+                { text: "Is the character a narrator?", yes: ["Nick Carraway", "Nick Carraway", "Nick Carraway"] },
+                { text: "Is the character old money?", yes: ["Tom Buchanan", "Daisy Buchanan"] },
+                { text: "Is the character a man?", yes: ["Jay Gatsby", "Owl Eyes", "Tom Buchanan", "Henry Gatz", "Nick Carraway", "George Wilson", "Dan Cody", 
+                    "Jay Gatsby", "Owl Eyes", "Tom Buchanan", "Henry Gatz", "Nick Carraway", "George Wilson", "Dan Cody"
+                ] },
+                { text: "Is the character a mother?", yes: ["Daisy Buchanan"] },
+                { text: "Is the character working class?", yes: ["Myrtle Wilson", "George Wilson"] },
+                { text: "Is the character involved in an affair?", yes: ["Tom Buchanan", "Daisy Buchanan", "Jay Gatsby", "Myrtle Wilson"] },
+                { text: "Is the character dead?", yes: ["Jay Gatsby", "Myrtle Wilson", "George Wilson", "Dan Cody"] },
+                { text: "Is the character an athlete?", yes: ["Jordan Baker", "Tom Buchanan"] },
+                { text: "Is the character an outsider within the Eggs?", yes: ["Jay Gatsby", "Nick Carraway"] },
+                { text: "Is the character a criminal?", yes: ["Tom Buchanan", "Meyer Wolfsheim", "Jay Gatsby", "Daisy Buchanan", "George Wilson"] },
+                { text: "Is the character a love interest?", yes: ["Daisy Buchanan", "Jordan Baker", "Myrtle Wilson"] },
+                { text: "Is the character a friend of Gatsby?", yes: ["Nick Carraway", "Jordan Baker", "Meyer Wolfsheim"] },
+                { text: "Is the character a socialite?", yes: ["Daisy Buchanan", "Jordan Baker"] },
+                { text: "Does the character have a mysterious past?", yes: ["Jay Gatsby", "Meyer Wolfsheim"] },
+                { text: "Is the character a bootlegger?", yes: ["Meyer Wolfsheim", "Jay Gatsby"] },
+                { text: "Is the character a gambler?", yes: ["Meyer Wolfsheim"] },
+                { text: "Is the character a party-goer?", yes: ["Jay Gatsby", "Jordan Baker"] }
             ];
         } else if (gatz === 2) {
             characters = [
@@ -59,17 +78,36 @@ document.addEventListener("DOMContentLoaded", function () {
             ];
             // try to think of like 25 questions pls, can be some repeats from gastby
             questions = [
-                { text: "Is the character wealthy?", no: ["John Proctor"] },
-                {text: "Is the Character a witch?", yes: ["Tituba"] }
+                { text: "Is the character a farmer?", yes: ["John Proctor", "Giles Corey"] },
+                { text: "Is the character in a dispute?", yes: ["John Proctor", "Thomas Putnam", "Reverend Parris"] },
+                { text: "Is the character a judge?", yes: ["Judge Danforth", "Judge Danforth", "Judge Danforth"] },
+                { text: "Is the character married?", yes: ["John Proctor", "Elizabeth Proctor", "Mary Warren", "Rebecca Nurse", "Giles Corey", "Ann Putnam",
+                    "John Proctor", "Elizabeth Proctor", "Mary Warren", "Rebecca Nurse", "Giles Corey", "Ann Putnam"
+                ] },
+                { text: "Is the character a woman ?", yes: ["Elizabeth Proctor", "Abigail Williams", "Mary Warren", "Tituba", "Rebecca Nurse", "Ann Putnam",
+                    "Elizabeth Proctor", "Abigail Williams", "Mary Warren", "Tituba", "Rebecca Nurse", "Ann Putnam"
+                ] },
+                { text: "Is the character a religious figure?", yes: ["Reverend Parris", "Reverend Hale"] },
+                { text: "Is the character a main antagonist?", yes: ["Abigail Williams", "Thomas Putnam"] },
+                { text: "Is the character a victim of the witch trials?", yes: ["John Proctor", "Giles Corey", "Rebecca Nurse"] },
+                { text: "Is the character a servant?", yes: ["Mary Warren", "Tituba"] },
+                { text: "Is the character a member of the court?", yes: ["Judge Danforth", "Reverend Hale"] },
+                { text: "Is the character a main character?", yes: ["John Proctor", "Elizabeth Proctor", "Abigail Williams", "Reverend Parris", "Reverend Hale", "Judge Danforth"] },
+                { text: "Is the character a member of the Putnam family?", yes: ["Thomas Putnam", "Ann Putnam"] },
+                { text: "Is the character a main accuser in the trials?", yes: ["Abigail Williams", "Mary Warren"] },
+                { text: "Is the character a supporter of the trials?", yes: ["Judge Danforth", "Abigail Williams", "Thomas Putnam"] },
+                { text: "Is the character a mother?", yes: ["Rebecca Nurse", "Elizabeth Proctor", "Ann Putnam"] }
             ];
         }
     }
     // this is what needs to be fixed. needs to not have repeats
+    // I THINK I FIXED IT 
     function getRandomQuestion() {
         if (questions.length === 0) {
             return { text: "No more questions available.", yes: [], no: [] };
         }
-        return questions[Math.floor(Math.random() * questions.length)];
+        const index = Math.floor(Math.random() * questions.length);
+        return questions.splice(index, 1)[0]; // Remove the question from the pool to avoid repeats
     }
 
     let questionIndex = 0; // Tracks question progress
@@ -86,9 +124,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const resultText = document.getElementById("result");
     
     const progressBar = document.getElementById("progress-bar");
-    // updates the progress bar, doesnt work for some reason???
+    // updates the progress bar
     function updateProgress() {
-        let percent = ((questionIndex / questions.length) * 100) + "%";
+        let percent = ((questionIndex / 10) * 100) + "%";
         progressBar.style.width = percent;
     }
     // computer tallies up the points and displays the final guess
@@ -126,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 firstQuestionAsked = true;
                 askNextQuestion();
             };
-        } else if (questionIndex < 2) { // this is what you need to change to add more questions, just change the number 2 to however many questions you want id reccommend 15-20
+        } else if (questionIndex < 10) { // this is what you need to change to add more questions, just change the number 2 to however many questions you want id reccommend 15-20
             let currentQuestion = getRandomQuestion(); // current question is what will be displayed
             questionText.textContent = currentQuestion.text;
 
